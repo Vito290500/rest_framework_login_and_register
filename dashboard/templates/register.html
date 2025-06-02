@@ -1,0 +1,39 @@
+<!-- REGISTER TEMPLATES -->
+
+{% load static %}
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <title>Registrazione</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  </head>
+  <body>
+    <div class="card">
+
+      <img src="https://wallpapers.com/images/featured/minimalist-7xpryajznty61ra3.jpg" alt="">
+      <p class="arrow">▾</p>
+
+      <div class="form-container">
+        <h2>Registrazione</h2>
+        <pre id="registerOutput"></pre>
+
+        <form id="registerForm">
+          <input name="username" placeholder="Username" required>
+          <input name="email"    type="email" placeholder="E-mail" required>
+          <input name="password" type="password" placeholder="Password" required>
+
+          <div class="linkage">
+            <a href="/" id="loginLink">Hai già un account? Accedi</a>
+          </div>
+
+          <button type="submit">Registrati</button>
+        </form>
+
+      </div>
+
+    </div>
+
+    <script src="{% static 'js/register.js' %}"></script>
+  </body>
+</html>

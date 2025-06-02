@@ -1,0 +1,29 @@
+<!-- HOMEPAGE TEMPLATES -->
+
+{% load static %}
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+  </head>
+
+  <body>
+    <div class="card">
+
+      <img src="https://wallpapers.com/images/featured/minimalist-7xpryajznty61ra3.jpg" alt="">
+
+      <p class="arrow">▾</p>
+
+      <div class="form-container">
+
+        <h2 id="welcomeMessage">Benvenuto!</h2>
+
+        <p id="userDetails"></p>
+      </div>
+
+    </div>
+    <script src="{% static 'js/homepage.js' %}"></script>
+  </body>
+</html>
