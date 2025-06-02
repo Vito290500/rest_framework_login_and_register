@@ -18,6 +18,10 @@ document.getElementById("loginForm").addEventListener("submit", async e => {
     window.location.href = "/homepage/";
   } 
   else {
-    document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+    const error = data.non_field_errors[0];
+    const outputFiled = document.getElementById("output")
+
+    outputFiled.style.display = "block";
+    outputFiled.textContent = error;
   }
 });

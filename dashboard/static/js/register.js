@@ -22,13 +22,18 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.ok) {
-        output.textContent = "Utente creato ✅";
-        form.reset();
-      } else {
+      output.textContent = "Utente creato ✅";
+      form.reset();
+      } 
+      else {
         const errorData = await response.json();
-        output.textContent = JSON.stringify(errorData, null, 2);
+        const messages = Object.values(errorData).flat().join("\n"); 
+        
+        output.style.display = "block";
+        output.textContent = messages;
       }
-    } catch (err) {
+    } 
+    catch (err) {
       output.textContent = `Errore di rete: ${err}`;
     }
   });

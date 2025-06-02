@@ -24,41 +24,57 @@ body{
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 550px;
-    height: 700px;
+    width: 1000px;
+    height: 650px;
     background-color: var(--primario);
     transform: translate(-50%, -50%);
     box-shadow: 1px 1px 8px 2px rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
 }
 .card img{
     width: 100%;
     height: 280px;
 }
-.form-container{
-    height: 350px;
-    padding: 20px;
+.banner{
+  position: relative;
 }
-.arrow{
-    background-color: var(--neutral_scuro);
-    border-radius: 50%;
-    box-shadow: 1px 1px 8px 2px rgba(0,0,0,0.1);
-    width: 35px;
-    font-size: 25px;
-    text-align: center;
-    padding: 12px;
-    margin-top: -2rem;
+.banner img{
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+}
+.banner h3{
+  z-index: 9999;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--neutral_scuro);
+  font-size: 40px;
+  line-height: 3rem;
+  backdrop-filter: blur(8px);
+  padding: 20px;
+}
+.banner h3 span{
+  color: var(--accent);
+}
+.form-container{
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .form-container h2{
     color: var(--accent);
     text-align: center;
-    margin-top: -1rem;
     font-family: 'Montserrat', sans-serif;
 }
 #loginForm{
+    height: 45%;
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -76,6 +92,9 @@ body{
     color: var(--neutral_scuro);
     outline-color: none;
 }
+#loginForm input:first-of-type{
+    margin-bottom: 2rem;
+}
 #loginForm input:focus {
   outline: none;
   border: 1px solid var(--accent);
@@ -87,14 +106,14 @@ body{
     width: 12rem;
     height: 2rem;
     color: var(--neutral_scuro);
-    margin-top: 2rem;
+    margin-top: 4rem;
     cursor: pointer;
 }
 #loginForm button:hover{
     background-color: #e96ba8c7;
 }
 .linkage{
-    padding: 0px 20px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -125,4 +144,12 @@ body{
 #register:hover::after {
     right: 0.8rem;   
     opacity: 1;
+}
+#output{
+    display: none;
+    padding: 20px;
+    width: 80%;
+    background-color: var(--secondario);
+    box-shadow: 1px 1px 8px 2px rgba(0,0,0,0.5);
+    color: var(--neutral_scuro);
 }
