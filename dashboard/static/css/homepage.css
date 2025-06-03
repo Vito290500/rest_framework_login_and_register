@@ -1,66 +1,213 @@
 /* Colors palettes */
 :root {
-  --primario:        #2B2643;
-  --secondario:      #3F3A6F;
-  --accent:          #E96BA8;
-
-  --neutral_chiaro:  #1F1E2A;
-  --neutral_scuro:   #E0E0E0;
-  --neutral_medio:   #A8A8B3;
+  --primario:        #2B2643;   /* viola scuro dello sfondo principale */
+  --secondario:      #261C36;   /* viola medio per navbar/sidebar */
+  --primario-dark:   #1F1C2B;     
+  --accent:          #E96BA8;   /* rosa/rosa ciclamino per dettagli */
+  --neutral_chiaro:  #1F1E2A;   /* quasi nero, per testo su sfondi scuri */
+  --neutral_scuro:   #E0E0E0;   /* grigio chiaro, per testo su sfondi scuri */
+  --neutral_medio:   #A8A8B3;   /* grigio neutro per testo secondario */
+  --hover-bg:        #4B467F;   /* sfondo hover per menu-item */
 }
 
-/* Font import */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-body {
-  padding: 0;
+* {
   margin: 0;
-  background-image: url("https://wallpapers.com/images/featured/minimalist-7xpryajznty61ra3.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
 }
-.card {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 550px;
-  height: 700px;
+body {
+  font-family: 'Montserrat', sans-serif;
   background-color: var(--primario);
-  transform: translate(-50%, -50%);
-  box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.5);
+}
+/* ===== Layout container: sidebar + main-content ===== */
+.container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh; 
+  overflow: hidden;
+}
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 240px;
+  background-color: var(--primario-dark);
+  color: var(--neutral_scuro);
+  display: flex;
   flex-direction: column;
+  transition: width 0.3s ease;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
-.card img {
-  width: 100%;
-  height: 280px;
+.sidebar.collapsed {
+  width: 60px;
 }
-.arrow {
-  background-color: var(--neutral_scuro);
-  border-radius: 50%;
-  box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.1);
-  width: 35px;
-  font-size: 25px;
-  text-align: center;
-  padding: 12px;
-  margin-top: -2rem;
+/* ===== LOGO della sidebar ===== */
+.sidebar__logo {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
-.form-container {
-  height: 350px;
-  padding: 20px;
-  text-align: center;
-}
-.form-container h2 {
+.sidebar__logo .logo-text {
+  font-size: 1.5rem;
   color: var(--accent);
-  margin-top: -1rem;
-  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
 }
-#userDetails {
-  color: var(--neutral_medio);
-  margin-top: 0.5rem;
+.sidebar.collapsed .sidebar__logo .logo-text {
+  opacity: 0;           
+  visibility: hidden;
+}
+.sidebar.collapsed .sidebar__logo::before {
+  content: 'D';
+  font-size: 1.5rem;
+  color: var(--accent);
+  position: absolute;
+}
+.sidebar__menu {
+  flex-grow: 1;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+.sidebar__menu .menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: var(--neutral_scuro);
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.sidebar__menu .menu-item:hover {
+  background-color: var(--hover-bg);
+}
+.sidebar__menu .menu-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+}
+.sidebar.collapsed .sidebar__menu .menu-item {
+  justify-content: center;
+}
+.sidebar.collapsed .sidebar__menu .menu-item .menu-text {
+  display: none;
+}
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--neutral_chiaro);
+  overflow-y: auto;
+}
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 20px;
+  background-color: var(--primario-dark);
+  color: var(--neutral_scuro);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+.navbar__hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40px;
+}
+.navbar__hamburger .hamburger-line {
+  width: 25px;
+  height: 4px;                   
+  background-color: var(--accent); 
+  border-radius: 2px;
+}
+/* ===== SEARCH BAR ===== */
+.navbar__search {
+  position: relative;
+  flex: 1;
+  max-width: 500px;
+  margin: 0 20px;
+}
+.navbar__search input {
+  width: 100%;
+  padding: 8px 12px;
+  padding-right: 40px;
   font-size: 1rem;
-  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+.navbar__search input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.navbar__search .search-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666666;
+}
+.navbar__search .search-button:hover {
+  color: #333333;
+}
+/* ===== PULSANTI IMPOSTAZIONI E PROFILO ===== */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.btn-settings {
+  background-color: var(--secondario);
+  border: none;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-settings img {
+  width: 24px;
+  height: 24px;
+}
+.btn-settings:hover {
+  background-color: var(--primario);
+}
+.profile-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #cccccc;
+  transition: border-color 0.2s;
+}
+.profile-icon:hover {
+  border-color: var(--secondario);
+}
+/* ===== CONTENUTO DELLA HOME ===== */
+.content-area {
+  padding: 20px;
+  color: #ffffff;
+}
+.card_home_page {
+  background-color: var(--neutral_chiaro);
+  color: #000000;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
 }

@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("access");
   if (!token) {
-    window.location.href = "/login/";
+    window.location.href = "/";
     return;
   }
 
@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const res = await fetch("/api/auth/me/", {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + token
+        "Authorization": `Bearer ${token}`
       }
     });
 
     if (!res.ok) {
-      window.location.href = "/login/";
+      console.error("Token non valido o scaduto (status:", res.status, ")");
       return;
     }
 
@@ -29,6 +29,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   catch (err) {
     console.error("Errore nel fetch:", err);
-    window.location.href = "/login/";
   }
 });
