@@ -2,6 +2,7 @@
 ROOT Settings 
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,6 +35,7 @@ INSTALLED_APPS = [
     "drf_spectacular",  
     "drf_spectacular_sidecar",
     "accounts",
+    "cards_recipe",
     "dashboard",
 ]
 
@@ -136,4 +138,16 @@ SPECTACULAR_SETTINGS = {
     "DESCRIPTION": "Register/Login JWT + Hello endpoint",
     "VERSION": "0.1.0",
     "SERVE_INCLUDE_SCHEMA": False,     
+}
+
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }

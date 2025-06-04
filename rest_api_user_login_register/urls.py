@@ -17,5 +17,7 @@ urlpatterns = [
 
     # --- app endpoints ---
     path("api/auth/", include("accounts.urls")),
+    path("api/", include("cards_recipe.urls")),
     path("", include("dashboard.urls")),
+
 ]

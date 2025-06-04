@@ -1,0 +1,311 @@
+/* Colors palettes */
+:root {
+  --primario:         #121212;   
+  --secondario:       #1E1E1E;  
+  --terziario:        #2C2C2C;
+
+  --accent-primary:   #7C3AED;
+  --accent-secondary: #8B5CF6;
+
+  --neutral_scuro:   #E0E0E0;
+  --neutral_medio:   #A8A8B3;   
+  --border:          rgba(255, 255, 255, 0.077);
+}
+
+
+
+/* ===== CONTENITORE CARDS HEADER ===== */
+.cards-container {
+  background-color: var(--secondario);
+  width: 98%;
+  margin: auto;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.tools-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tools-header button.add-card-btn {
+  background-color: var(--accent-primary);
+  color: var(--neutral_scuro);
+  border-radius: 4px;
+  height: 2rem;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  width: 10rem;
+}
+.tools-header button.add-card-btn:hover{
+  background-color: var(--accent-secondary);
+}
+.tools-header select {
+  border-radius: 4px;
+  height: 2rem;
+  padding: 5px 10px;
+  width: 15rem;
+  text-align: center;
+  background-color: var(--accent-primary);
+  border: none;
+  color: var(--neutral_scuro);
+}
+.sub-tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+#tools {
+  background: none !important;
+  width: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+#tools img:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+#tools img {
+  width: 25px;
+  height: 25px;
+}
+
+
+/* ===== GRIGLIA DELLE CARDS: 5 COLONNE × 2 RIGHE ===== */
+.cards_list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  width: 98%;
+  margin: auto;
+  margin-top: 2rem;
+  max-height: calc(2 * (250px + 20px));
+}
+.card_custom {
+  background-color: var(--secondario);
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.card_custom img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.card_details {
+  padding: 20px;
+  color: var(--neutral_scuro);
+}
+.card_details h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: var(--accent-secondary);
+}
+.card_details p {
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+.tag{
+  background-color: var(--terziario);
+  color: var(--neutral_scuro);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: 5rem;
+  text-align: center;
+  padding: 5px 10px;
+  margin-bottom: 10px!important;
+}
+.tag-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card_custom .card-body p {
+  color: var(--neutral_medio);
+  font-size: 0.9rem;
+  margin: 2px 0;
+}
+
+
+/* ===== BARRA DI PAGINAZIONE ===== */
+.pagination {
+  width: 98%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.page-btn {
+  background-color: var(--secondario);
+  color: var(--neutral_scuro);
+  border: 1px solid var(--neutral_medio);
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.page-btn:hover:not(.active):not(:disabled) {
+  background-color: var(--hover-bg);
+  color: #ffffff;
+}
+.page-btn:disabled {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(224, 224, 224, 0.6);
+  cursor: default;
+}
+.page-btn.active {
+  background-color: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+
+
+/* ===== STILI PER LA MODALE ===== */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background-color: var(--secondario);
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid var(--border);
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+  position: relative;
+}
+.close-btn {
+  color: var(--neutral_scuro);
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: var(--accent-primary);
+}
+.modal-content h2 {
+  color: var(--accent-primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.modal-content label {
+  color: var(--neutral_scuro);
+  font-size: 0.95rem;
+}
+.modal-content input[type="text"],
+.modal-content input[type="url"],
+.modal-content textarea,
+.modal-content select {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--terziario);
+  color: var(--neutral_scuro);
+  transition: border-color 0.2s;
+}
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+  outline: none;
+  border-color: var(--accent-secondary);
+}
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+.save-btn,
+.cancel-btn {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.save-btn {
+  background-color: var(--accent-primary);
+  color: #ffffff;
+}
+.save-btn:hover {
+  background-color: var(--accent-secondary);
+}
+.cancel-btn {
+  background-color: var(--secondario);
+  color: var(--neutral_scuro);
+}
+.cancel-btn:hover {
+  background-color: var(--terziario);
+}
+
+/* ========== MODALE DETTAGLIO CARD ========== */
+#detailModal .modal-content {
+  background-color: var(--secondario);
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid var(--border);
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+  position: relative;
+}
+#detailImg{
+  height: 200px!important;
+  object-fit: cover;
+}
+#detailModal h2 {
+  color: var(--accent-primary);
+  margin-bottom: 12px;
+  text-align: center;
+}
+#itemsList li {
+  background-color: var(--terziario);
+  color: var(--neutral_scuro);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.remove-item-btn {
+  background: none;
+  border: none;
+  color: var(--accent-primary);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 6px;
+}
+.remove-item-btn:hover {
+  color: var(--accent-secondary);
+}

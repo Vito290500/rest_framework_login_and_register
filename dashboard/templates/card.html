@@ -1,1 +1,109 @@
-works
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard – Cards{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/cards.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="sotto-navBar">
+    <h3>LE MIE CARDS</h3>
+    <div class="route-dashboard">
+      <p>Dashboardly</p>
+      <p>/</p>
+      <p id="active">Le mie Card</p>
+    </div>
+  </div>
+
+  <div class="cards-container">
+    <div class="tools-header">
+      <select name="" id="">
+        <option value="">Filtri</option>
+      </select>
+      <div class="sub-tools">
+        <button id="tools">
+          <img src="{% static 'img/settings.png' %}" alt="">
+        </button>
+        <button id="tools">
+          <img src="{% static 'img/layout.png' %}" alt="">
+        </button>
+        <button id="openModal" class="add-card-btn">Aggiungi card</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenitore dynamicamente popolato da JS -->
+  <div id="cardsList" class="cards_list"></div>
+
+  <!-- ===== MODALE “Aggiungi Card” (già esistente) ===== -->
+  <div id="cardModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2>Aggiungi Nuova Card</h2>
+      <form id="cardForm">
+        <label for="cardImg">URL Immagine</label>
+        <input type="url" id="cardImg" name="img" placeholder="https://esempio.com/immagine.jpg" required />
+
+        <label for="cardTitle">Titolo</label>
+        <input type="text" id="cardTitle" name="title" placeholder="Inserisci titolo" minlength="3" maxlength="100" required />
+
+        <label for="cardDescription">Descrizione</label>
+        <textarea id="cardDescription" name="description" rows="4" placeholder="Descrivi la card…"></textarea>
+
+        <label for="cardCategory">Categoria</label>
+        <select id="cardCategory" name="category" required>
+          <option value="">Seleziona categoria</option>
+          <option value="Travel">Travel</option>
+          <option value="Finanza">Finanza</option>
+          <option value="Sport">Sport</option>
+          <option value="Hobby">Hobby</option>
+          <option value="Outfit">Outfit</option>
+          <option value="Food">Food</option>
+          <option value="Idea">Idea</option>
+          <option value="Project">Project</option>
+        </select>
+
+        <div class="form-buttons">
+          <button type="submit" class="save-btn">Salva</button>
+          <button type="button" id="cancelModal" class="cancel-btn">Annulla</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== MODALE “Dettaglio Card” ===== -->
+  <div id="detailModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeDetailModal">&times;</span>
+      <h2>Dettaglio Card</h2>
+
+      <div id="detailInfo">
+        <img id="detailImg" src="" alt="Immagine Card" style="width:100%; height:auto; border-radius:4px; margin-bottom:10px;">
+        <h3 id="detailTitle" style="color: var(--accent-secondary); margin-bottom:8px;"></h3>
+        <p id="detailDescription" style="margin-bottom:8px;"></p>
+        <div class="tag-container" style="margin-bottom:12px;">
+          <p id="detailDate" class="tag" style="margin:0;"></p>
+          <p id="detailCategory" class="tag" style="margin:0;"></p>
+        </div>
+      </div>
+
+      <div id="itemsSection">
+        <h4 style="margin-bottom:8px;">Lista Elementi</h4>
+        <ul id="itemsList" style="list-style:none; padding-left:0; margin-bottom:12px;"></ul>
+
+        <div style="display:flex; gap:8px; margin-bottom:12px;">
+          <input type="text" id="newItemInput" placeholder="Nuovo elemento…" style="flex:1; padding:8px; border-radius:4px; border:1px solid var(--border); background-color: var(--terziario); color: var(--neutral_scuro);" />
+          <button id="addItemBtn" class="save-btn" style="padding:8px 12px;">Aggiungi</button>
+        </div>
+
+        <button id="saveItemsBtn" class="save-btn" style="width:100%;">Salva Elementi</button>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'js/cards.js' %}"></script>
+{% endblock %}

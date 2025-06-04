@@ -1,13 +1,15 @@
 /* Colors palettes */
 :root {
-  --primario:        #2B2643;   /* viola scuro dello sfondo principale */
-  --secondario:      #261C36;   /* viola medio per navbar/sidebar */
-  --primario-dark:   #1F1C2B;     
-  --accent:          #E96BA8;   /* rosa/rosa ciclamino per dettagli */
-  --neutral_chiaro:  #1F1E2A;   /* quasi nero, per testo su sfondi scuri */
-  --neutral_scuro:   #E0E0E0;   /* grigio chiaro, per testo su sfondi scuri */
-  --neutral_medio:   #A8A8B3;   /* grigio neutro per testo secondario */
-  --hover-bg:        #4B467F;   /* sfondo hover per menu-item */
+  --primario:         #121212;   
+  --secondario:       #1E1E1E;  
+  --terziario:        #2C2C2C;
+
+  --accent-primary:   #7C3AED;
+  --accent-secondary: #8B5CF6;
+
+  --neutral_scuro:   #E0E0E0;
+  --neutral_medio:   #A8A8B3;   
+  --border:          rgba(255, 255, 255, 0.077);
 }
 
 
@@ -18,39 +20,39 @@
 }
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--primario);
 }
-/* ===== Layout container: sidebar + main-content ===== */
 .container {
   display: flex;
   height: 100vh; 
   overflow: hidden;
 }
+
+
+
 /* ===== SIDEBAR ===== */
 .sidebar {
   width: 240px;
-  background-color: var(--primario-dark);
+  background-color: var(--secondario);
   color: var(--neutral_scuro);
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.077);
 }
 .sidebar.collapsed {
   width: 60px;
 }
-/* ===== LOGO della sidebar ===== */
 .sidebar__logo {
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.077);
   position: relative;
 }
 .sidebar__logo .logo-text {
   font-size: 1.5rem;
-  color: var(--accent);
+  color: var(--accent-secondary);
   white-space: nowrap;
   transition: opacity 0.3s ease;
 }
@@ -61,7 +63,7 @@ body {
 .sidebar.collapsed .sidebar__logo::before {
   content: 'D';
   font-size: 1.5rem;
-  color: var(--accent);
+  color: var(--accent-secondary);
   position: absolute;
 }
 .sidebar__menu {
@@ -80,9 +82,10 @@ body {
   color: var(--neutral_scuro);
   text-decoration: none;
   transition: background-color 0.2s;
+  width: 100%;
 }
 .sidebar__menu .menu-item:hover {
-  background-color: var(--hover-bg);
+  background-color: var(--accent-primary);
 }
 .sidebar__menu .menu-icon {
   width: 24px;
@@ -95,14 +98,18 @@ body {
 .sidebar.collapsed .sidebar__menu .menu-item .menu-text {
   display: none;
 }
+
+
+
 /* ===== MAIN CONTENT ===== */
 .main-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  background-color: var(--neutral_chiaro);
+  background-color: var(--primario);
   overflow-y: auto;
 }
+
 /* ===== NAVBAR ===== */
 .navbar {
   display: flex;
@@ -110,10 +117,10 @@ body {
   justify-content: space-between;
   height: 60px;
   padding: 0 20px;
-  background-color: var(--primario-dark);
+  background-color: var(--secondario);
   color: var(--neutral_scuro);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.077);
   flex-shrink: 0;
 }
 .navbar__hamburger {
@@ -128,10 +135,12 @@ body {
 }
 .navbar__hamburger .hamburger-line {
   width: 25px;
-  height: 4px;                   
-  background-color: var(--accent); 
+  height: 2px;                   
+  background-color: var(--accent-secondary); 
   border-radius: 2px;
 }
+
+
 /* ===== SEARCH BAR ===== */
 .navbar__search {
   position: relative;
@@ -150,7 +159,7 @@ body {
 }
 .navbar__search input:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--accent-secondary);
 }
 .navbar__search .search-button {
   position: absolute;
@@ -166,6 +175,8 @@ body {
 .navbar__search .search-button:hover {
   color: #333333;
 }
+
+
 /* ===== PULSANTI IMPOSTAZIONI E PROFILO ===== */
 .navbar__actions {
   display: flex;
@@ -197,17 +208,57 @@ body {
   transition: border-color 0.2s;
 }
 .profile-icon:hover {
-  border-color: var(--secondario);
+  border-color: var(--accent-secondary);
 }
+
+
 /* ===== CONTENUTO DELLA HOME ===== */
 .content-area {
-  padding: 20px;
   color: #ffffff;
 }
 .card_home_page {
-  background-color: var(--neutral_chiaro);
   color: #000000;
   border-radius: 8px;
   padding: 20px;
-  margin-top: 20px;
+}
+
+
+/* STYLE CONTENT DASHBOARD */
+.banner-welcome{
+  height: 100px;
+  border-radius: 4px;
+  background-color: var(--secondario);
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.077);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.sotto-navBar{
+  margin-top: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.route-dashboard{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.route-dashboard p{
+  color: var(--neutral_medio);
+  cursor: pointer;
+}
+.route-dashboard #active{
+  color: var(--neutral_scuro);
+}
+.banner-welcome h1{
+  color: var(--accent-primary);
+}
+#userDetails{
+  color: var(--neutral_scuro);
 }

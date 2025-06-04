@@ -21,11 +21,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const userData = await res.json();
-    const welcomeEl = document.getElementById("welcomeMessage");
     const detailsEl = document.getElementById("userDetails");
-
-    welcomeEl.textContent = `Benvenuto, ${userData.username}!`;
-    detailsEl.textContent = `Email: ${userData.email}`;
+    detailsEl.textContent = userData.username;
+    
   }
   catch (err) {
     console.error("Errore nel fetch:", err);
