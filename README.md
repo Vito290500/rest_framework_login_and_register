@@ -1,0 +1,1 @@
+Simple Dashboard with only one function available for now (cards section, create cards with detail, create list of element in the card and update it every time you what) . This exercise was made only for practise with User API and Recipe API, and API first + fetch with js structure.
