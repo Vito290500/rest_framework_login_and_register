@@ -1,5 +1,7 @@
-Simple Dashboard with only one function available for now (cards section, create cards with detail, create list of element in the card and update it every time you what) . This exercise was made only for practise with User API and Recipe API, and API first + fetch with js structure.
-The platform is not finished yet, for now the only things was implemented are Login and register with user API and token refresh and auth (and all the validate, user input verify, error manage during registration and login), cards list section with recipe API.
+Simple dashboard with only one function available for now: the cards section. You can create cards with details, create a list of elements in each card, and update them whenever you want. This exercise was made only to practice with the User API and Recipe API, following an API-first approach and using fetch in a JS structure. The platform is not finished yet; for now, the only things implemented are:
+
+Login and registration with the User API, including token refresh and authentication (with all validation, user-input verification, and error handling during registration and login).
+Cards-list section with the Recipe API.
 
 ![image](https://github.com/user-attachments/assets/96933b1d-b4cc-40e0-b882-7aea66cf8906)
 ![image](https://github.com/user-attachments/assets/b05c8a1a-afd1-49c6-b1cf-859560762f89)
